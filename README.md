@@ -71,13 +71,7 @@ pip install git+https://github.com/nfbouche/pyetc_ifs.git
 ## Quick Start
 
 ```python
-from pyetc_ifs import iredMUSE
-
-# Initialize the ETC, 'DEBUG' will allow you to see useful prints during the computation,
-# skip_dataload = False will load the static sky configurations + general transmissions.
-# throughput_system selects the transmission set; omitted/None defaults to AR.
-wst = WST(log = 'DEBUG', skip_dataload = False, throughput_system = 'AR')
-# Use throughput_system = 'GRINAR' to load the alternative transmission set.
+from pyetc_iredmuse import iredMUSE
 
 # skip_dataload = False will load the static sky configurations + general transmissions
 redmuse = iredMUSE(log='DEBUG', skip_dataload=False)

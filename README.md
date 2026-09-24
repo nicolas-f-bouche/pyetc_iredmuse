@@ -16,14 +16,7 @@ Cite: Ferro, Genoni et al. 2026, SPIE
 **pyetc_ifs** is a Python package for exposure time calculation and signal-to-noise ratio (SNR) estimation for IFU instruments, including:
 
 - muse
-
-- wst
-
-- bluemuse
-
 - iredmuse
-
-- harmoni
 
 ## Requirements
 
@@ -47,31 +40,31 @@ pip install "numpy>=1.20.0" "scipy>=1.7.0" "matplotlib>=3.3.0" "astropy>=5.0.0" 
 You can install directly from GitHub using pip:
 
 ```bash
-pip install git+https://github.com/nfbouche/pyetc_ifs.git
+pip install git+https://github.com/nicolas-f-bouche/pyetc_iredmuse.git
 ```
 
 If you already have it installed via pip, you can upgrade it with:
 
 #### Option 1: forced (recommended)
 ```bash
-pip install --force-reinstall git+https://github.com/nfbouche/pyetc_ifs.git
+pip install --force-reinstall git+https://github.com/nicolas-f-bouche/pyiredmuse.git
 ```
 
 #### Option 2: normal upgrade
 ```bash
-pip install --upgrade git+https://github.com/nfbouche/pyetc_ifs.git
+pip install --upgrade git+https://github.com/nicolas-f-bouche/pyiredmuse.git
 ```
 
 #### Option 3: uninstall and reinstall (cleanest option)
 ```bash
 pip uninstall pyetc_ifs
-pip install git+https://github.com/nfbouche/pyetc_ifs.git
+pip install git+https://github.com/nicolas-f-bouche/pyiredmuse.git
 ```
 
 ## Quick Start
 
 ```python
-from pyetc_iredmuse import iredMUSE
+from pyetc_ifs import iredMUSE
 
 # skip_dataload = False will load the static sky configurations + general transmissions
 redmuse = iredMUSE(log='DEBUG', skip_dataload=False)
@@ -175,22 +168,6 @@ full_obs = {
 }
 ```
 
-The throughput system is selected when initializing `WST`:
-
-```python
-WST(throughput_system='AR')      # default when omitted or set to None
-WST(throughput_system='GRINAR')
-```
-
-Only `AR` and `GRINAR` are valid values; any other value raises `ValueError`.
-
-For MOS observations, `OBJ_FIB_DISP` is optional and defaults to `None`. When it is omitted or set to `None`, the core applies the 90% mean object-centering efficiency. If a non-negative displacement is provided, the core uses that value in the geometric fiber-aperture calculation without the additional 90% factor.
-**NOTE**: *"COADD_XY": 'best' — automatically selects the spatial coadding that maximizes the SNR. Like the compute options in `time_from_source`, it updates "COADD_XY" in the obs dictionary with the chosen value.*
-
-**NOTE (3)**: *`"SNR_RANGE": True` — when set, `time_from_source` targets the median SNR over the wavelength window `[LAM_WIN1, LAM_WIN2]` instead of the SNR at `Lam_Ref`. Works for `compute='dit'`, `'ndit'`, and `'best'` (which internally uses `'ndit'`). Line sources (`Obj_SED='line'`) always use their line-center wavelength and ignore this flag. The window is automatically clipped to the instrument spectral range if it extends beyond it.*
-
-**NOTE (2)**: *When using `"Obj_SED": "upload"`, you must provide `"UPLOAD_FILE": "/path/to/spectrum.dat"` pointing to a two-column ASCII file/FITS table (wavelength, flux). Optional comment headers (or "units" of the FITS columns) set units: `# nm` or `# aa` for wavelength (default: Å - `aa`), `# fl` or `# ph` for flux (default: erg/cm²/s/Å - `fl`). Set `"OBJ_MAG": null` to use the spectrum as-is, or set a numeric value (e.g. `18`) to normalize it to that magnitude in the chosen `MAG_FIL`/`MAG_SYS` band.*
-
 After the computation results can be plotted easily accessing the mpdaf `Spectrum` objects in the results dictionary like this:
 ```python
 res_snr['spec']['snr'].plot()
@@ -241,15 +218,7 @@ This package has been developed from the original `pyetc` package available at h
 
 update in future version
 
-## Version
 
-### 0.1 — 26 June 2026
-- initial version
-- Throughput curves not official
-
-### 1.0 — 1 July 2026
-- Official release of the iredMUSE Exposure Time Calculator.
-- Throughput curves not official
   
 ## Contact
 

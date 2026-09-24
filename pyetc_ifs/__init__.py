@@ -10,10 +10,8 @@ __releasedate__ = "24 Sep 2026"
 __author__ = "Nicolas Bouché & Matteo Ferro & Roland Bacon"
 
 # Import main classes and functions
-from .wst import WST
 from .iredmuse import iredMUSE
 from .muse import MUSE
-from .bluemuse import blueMUSE
 from .etc import (
     ETC,
     sersic,

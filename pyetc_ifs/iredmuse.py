@@ -15,7 +15,7 @@ class iredMUSE(ETC):
     SKYDIR = CURDIR + '/sky'
     TRANSDIR = CURDIR + '/iredmuse'
 
-    def __init__(self, log=logging.INFO, skip_dataload=False, spaxel=0.22, dcurrent=0.02, ron=7):
+    def __init__(self, log=logging.INFO, skip_dataload=False, spaxel=0.22, dcurrent=0.02, ron=6):
         """
             Initialize the iredMUSE class with telescope and instrument parameters.
             spaxel: spaxel size in arcsec (default 0.22)
@@ -24,7 +24,7 @@ class iredMUSE(ETC):
             @param skip_dataload:
             @param spaxel:  spaxel size in arcsec (default 0.22)
             @param dcurrent: 0.02 e-/pixel/s default
-            @param ron: readout noise in e- (default 7)
+            @param ron: readout noise in e- (default 6)
         """
         start_time = time.time()
         self.refdir = self.CURDIR

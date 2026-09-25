@@ -5,7 +5,7 @@ A Python package for exposure time calculation and signal-to-noise ratio estimat
 for IFS instruments MUSE BlueMUSE iredMUSE, WST and Harmoni
 """
 
-__version__ = "0.3"
+__version__ = "0.4"
 __releasedate__ = "24 Sep 2026"
 __author__ = "Nicolas Bouché & Matteo Ferro & Roland Bacon"
 
@@ -35,11 +35,9 @@ from .specalib import (
 # Define what gets imported with "from pyetc_ifs import *"
 __all__ = [
     # Main classes
-    "WST",
     "ETC",
     "iredMUSE",
     "MUSE",
-    "blueMUSE",
     "PhotometricSystem",
     "SEDModels",
     "FilterManager",

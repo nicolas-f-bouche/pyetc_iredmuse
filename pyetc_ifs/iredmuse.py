@@ -15,15 +15,16 @@ class iredMUSE(ETC):
     SKYDIR = CURDIR + '/sky'
     TRANSDIR = CURDIR + '/iredmuse'
 
-    def __init__(self, log=logging.INFO, skip_dataload=False, spaxel=0.22, dcurrent=0.02):
+    def __init__(self, log=logging.INFO, skip_dataload=False, spaxel=0.22, dcurrent=0.02, ron=7):
         """
             Initialize the iredMUSE class with telescope and instrument parameters.
             spaxel: spaxel size in arcsec (default 0.22)
             dcurrent: dark current in e-/pixel/h (default 0.02)
             @param log:
             @param skip_dataload:
-            @param spaxel:
-            @param dcurrent:
+            @param spaxel:  spaxel size in arcsec (default 0.22)
+            @param dcurrent: 0.02 e-/pixel/s default
+            @param ron: readout noise in e- (default 7)
         """
         start_time = time.time()
         self.refdir = self.CURDIR
@@ -39,6 +40,14 @@ class iredMUSE(ETC):
             'version': PACKAGE_VERSION,
             'release_date': DATEOFRELEASE,
             'history': [
+                {
+                    'version': '0.3',
+                    'label': 'Version 0.3',
+                    'release_date': '24 Sep 2026',
+                    'changes': [
+                        'cleaned up the code and added more documentation'
+                    ],
+                },
                 {
                     'version': '0.2',
                     'label': 'Version 0.2',
@@ -84,7 +93,7 @@ class iredMUSE(ETC):
                               lbda1 = 9500, # starting wavelength in Angstroem
                               lbda2 = 11300, # end wavelength in Angstroem
                               lsfpix = 2.2, # LSF in spectel
-                              ron = 7, # readout noise (e-) # squared sum for the 2x1 binning
+                              ron = ron, # readout noise (e-) # squared sum for the 2x1 binning
                               dcurrent = dcurrent*3600, # dark current (e-/pixel/h) # sum for the 2x1 binning
                               )
         if not skip_dataload:
@@ -102,8 +111,10 @@ class iredMUSE(ETC):
                                dlbda = 1., # Angstroem/pixel
                                lbda1 = 11300, # starting wavelength in Angstroem
                                lbda2 = 13000, # end wavelength in Angstroem
-                               lsfpix = 2.5, # LSF in spectel, 
-                               ron = 7, # readout noise (e-) # squared sum for the 2x1 binning
+                               lsfpix = 2.2, # LSF in spectel,
+                               ron = ron, # readout noise (e-) # squared sum for the 2x1 binning
+
+
                                dcurrent = dcurrent*3600, # dark current (e-/pixel/h) # sum for the 2x1 binning
                                )
         if not skip_dataload:
@@ -118,11 +129,11 @@ class iredMUSE(ETC):
                                iq_fwhm_ins = 0.13, # fwhm PSF of instrument, previously 0.30, updated on 03/03/2026, this probably considers also the detector (charge diffusion)
                                iq_beta = 2.80, # beta PSF of telescope + instrument (non-AO Moffat)
                                spaxel_size = spaxel, # spaxel size in arcsec ( * * * check for the binning 2x1, could be 0.125)
-                               dlbda = 1.5, # Angstroem/pixel, 
-                               lbda1 = 9330, # starting wavelength in Angstroem
-                               lbda2 = 12500, # end wavelength in Angstroem
-                               lsfpix = 2.5, # LSF in spectel,
-                               ron = 7, # readout noise (e-) # squared sum for the 2x1 binning
+                               dlbda = 2., # Angstroem/pixel,
+                               lbda1 = 9300, # starting wavelength in Angstroem
+                               lbda2 = 13000, # end wavelength in Angstroem
+                               lsfpix = 2.2, # LSF in spectel,
+                               ron = ron, # readout noise (e-) # squared sum for the 2x1 binning
                                dcurrent = dcurrent*3600, # dark current (e-/pixel/h) # sum for the 2x1 binning
                                )
         if not skip_dataload:

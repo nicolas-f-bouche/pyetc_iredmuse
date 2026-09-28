@@ -64,7 +64,7 @@ class PhotometricSystem:
     
     def _load_filter_profiles(self):
         """Loads filter transmission profiles from files."""
-        filters_folder = str(resources.files("pyetc_ifs").joinpath("Band_Filters/"))
+        filters_folder = str(resources.files("pyetc_iredmuse").joinpath("Band_Filters/"))
         band_filters = {}
         
         for filename in os.listdir(filters_folder):
@@ -181,7 +181,7 @@ class SEDModels:
     def __init__(self):
         # Save all filenames from ESO_original_spectra/ directory to a dictionary
         self.eso_spectra_files = {}
-        eso_spectra_dir = str(resources.files("pyetc_ifs").joinpath("ESO_original_spectra/"))
+        eso_spectra_dir = str(resources.files("pyetc_iredmuse").joinpath("ESO_original_spectra/"))
         try:
             for idx, filename in enumerate(os.listdir(eso_spectra_dir)):
                 if os.path.isfile(os.path.join(eso_spectra_dir, filename)):

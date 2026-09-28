@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyetc_ifs"
+name = "pyetc_iredmuse"
 dynamic = ["version"]
 description = "Exposure Time Calculator for the iredMUSE instrument (VLT)"
 readme = "README.md"
@@ -41,10 +41,10 @@ Documentation = "https://github.com/nfbouche/pyetc_iredmuse#readme"
 Issues = "https://github.com/nfbouche/pyetc_iredmuse/issues"
 
 [tool.setuptools.dynamic]
-version = {attr = "pyetc_ifs.__version__"}
+version = {attr = "pyetc_iredmuse.__version__"}
 
 [tool.setuptools]
-packages = ["pyetc_ifs"]
+packages = ["pyetc_iredmuse"]
 
 [tool.setuptools.package-data]
 pyetc_ifs = [

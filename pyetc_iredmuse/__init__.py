@@ -1,5 +1,5 @@
 """
-pyetc_ifs - Exposure Time Calculator for IFS
+pyetc_iredmuse - Exposure Time Calculator for IFS
 
 A Python package for exposure time calculation and signal-to-noise ratio estimation
 for IFS instruments MUSE BlueMUSE iredMUSE, WST and Harmoni
@@ -32,7 +32,7 @@ from .specalib import (
     plot_spectra_comparison,
 )
 
-# Define what gets imported with "from pyetc_ifs import *"
+# Define what gets imported with "from pyetc_iredmuse import *"
 __all__ = [
     # Main classes
     "ETC",

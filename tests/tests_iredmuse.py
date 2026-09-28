@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from pyetc_ifs.iredmuse import iredMUSE
-from pyetc_ifs.etc import (
+from pyetc_iredmuse.iredmuse import iredMUSE
+from pyetc_iredmuse.etc import (
     get_seeing_fwhm,
     mask_spectrum_edges,
     mask_line_region,

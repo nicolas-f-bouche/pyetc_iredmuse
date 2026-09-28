@@ -57,14 +57,14 @@ pip install --upgrade git+https://github.com/nicolas-f-bouche/pyiredmuse.git
 
 #### Option 3: uninstall and reinstall (cleanest option)
 ```bash
-pip uninstall pyetc_ifs
+pip uninstall pyetc_iredmuse
 pip install git+https://github.com/nicolas-f-bouche/pyiredmuse.git
 ```
 
 ## Quick Start
 
 ```python
-from pyetc_ifs import iredMUSE
+from pyetc_iredmuse import iredMUSE
 
 # skip_dataload = False will load the static sky configurations + general transmissions
 redmuse = iredMUSE(log='DEBUG', skip_dataload=False)
@@ -91,7 +91,7 @@ res_snr_at_wave = redmuse.snr_at_wave(con, im, spe, debug=True / False)
 res_time = redmuse.time_from_source(con, im, spe, compute='dit' / 'ndit' / 'best', debug=True / False)
 
 # --- SNR in a spectral window ---
-from pyetc_ifs.etc import snr_in_window
+from pyetc_iredmuse.etc import snr_in_window
 
 # Get median SNR in [5000, 6000] Å from a snr_from_source result
 med = snr_in_window(res_snr, lam1=5000, lam2=6000)

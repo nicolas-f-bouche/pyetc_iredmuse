@@ -1,6 +1,6 @@
 """
 Legacy setup.py for backward compatibility.
-Version is read from pyetc_ifs/__init__.py — edit only that file to bump the version.
+Version is read from pyetc_iredmuse/__init__.py — edit only that file to bump the version.
 """
 from setuptools import setup
 import re
@@ -8,7 +8,7 @@ import os
 
 # Single source of truth for version
 _here = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(_here, "pyetc_ifs", "__init__.py")) as _f:
+with open(os.path.join(_here, "pyetc_iredmuse", "__init__.py")) as _f:
     _version = re.search(r'^__version__\s*=\s*["\']([^"\']+)["\']', _f.read(), re.M).group(1)
 
 # Read requirements
@@ -16,15 +16,15 @@ with open("requirements.txt", "r") as f:
     requirements = [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
 setup(
-    name="pyetc_ifs",
+    name="pyetc_iredmuse",
     version=_version,
     description="Exposure Time Calculator for the iredMUSE instrument (VLT)",
     author="Nicolas Bouché, Matteo Ferro, Roland Bacon",
     author_email="nicolas.bouche@cnrs.fr",
     url="https://github.com/nfbouche/pyetc_iredmuse",
-    packages=["pyetc_ifs"],
+    packages=["pyetc_iredmuse"],
     package_data={
-        "pyetc_ifs": [
+        "pyetc_iredmuse": [
             "data/**/*",
             "Band_Filters/**/*.txt",
             "ESO_original_spectra/**/*",

@@ -1234,7 +1234,9 @@ class ETC:
         n_waves = len(waves)
         n_bins = n_waves // bin_factor
         n_valid = n_bins * bin_factor
-        
+         
+        self.logger.debug("n_bins {} rebins n_valid {}".format(n_bins, n_valid))
+
         signal_reshaped = nph_source.data[:n_valid].reshape(n_bins, bin_factor)
         noise_reshaped = tot_noise.data[:n_valid].reshape(n_bins, bin_factor)
         

@@ -3403,8 +3403,9 @@ def plot_noise_components(spec_dict):
     ax2.grid(True, ls='--', alpha=0.3)
     ax2.legend(loc='best')
 
-    plt.tight_layout()
+    #plt.tight_layout()
     plt.show()
+    return fig
 
 import numpy as np
 

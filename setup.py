@@ -1,8 +1,9 @@
 """Legacy setup.py for backward compatibility."""
 from setuptools import setup
 import os
-import runpy
 from pathlib import Path
+import subprocess
+from datetime import datetime
 from setuptools.command.build_py import build_py as _build_py
 
 _here = os.path.dirname(os.path.abspath(__file__))
@@ -11,8 +12,39 @@ with open(os.path.join(_here, "pyetc_iredmuse", "VERSION"), encoding="ascii") as
 
 
 def _get_release_date():
-    release_info = os.path.join(_here, "pyetc_iredmuse", "_release_info.py")
-    return runpy.run_path(release_info)["__releasedate__"]
+    try:
+        tag = subprocess.check_output(
+            ["git", "describe", "--tags", "--abbrev=0", "HEAD"],
+            cwd=_here,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        if not tag:
+            raise subprocess.CalledProcessError(1, "git describe")
+        release_date = subprocess.check_output(
+            ["git", "for-each-ref", "--format=%(taggerdate:short)", f"refs/tags/{tag}"],
+            cwd=_here,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        if not release_date:
+            release_date = subprocess.check_output(
+                ["git", "log", "-1", "--format=%cs", tag],
+                cwd=_here,
+                text=True,
+                stderr=subprocess.DEVNULL,
+            ).strip()
+    except (OSError, subprocess.CalledProcessError):
+        try:
+            release_date = subprocess.check_output(
+                ["git", "log", "-1", "--format=%cs", "HEAD"],
+                cwd=_here,
+                text=True,
+                stderr=subprocess.DEVNULL,
+            ).strip()
+        except (OSError, subprocess.CalledProcessError):
+            release_date = datetime.now().strftime("%Y-%m-%d")
+    return datetime.strptime(release_date, "%Y-%m-%d").strftime("%d %b %Y")
 
 
 class build_py(_build_py):

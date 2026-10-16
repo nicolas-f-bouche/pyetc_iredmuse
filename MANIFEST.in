@@ -4,9 +4,9 @@ include LICENSE
 include requirements.txt
 
 # Include data files
-recursive-include pyetc_wst/data *
-recursive-include pyetc_wst/Band_Filters *.txt
-recursive-include pyetc_wst/ESO_original_spectra *
+recursive-include pyetc_iredmuse/data *
+recursive-include pyetc_iredmuse/Band_Filters *.txt
+recursive-include pyetc_iredmuse/ESO_original_spectra *
 
 # Exclude unnecessary files
 global-exclude *.pyc

@@ -47,8 +47,8 @@ version = {attr = "pyetc_iredmuse.__version__"}
 packages = ["pyetc_iredmuse"]
 
 [tool.setuptools.package-data]
-pyetc_ifs = [
+pyetc_iredmuse = [
     "data/**/*",
-    "Band_Filters/**/*.txt",
+    "Band_Filters/*.txt",
     "ESO_original_spectra/**/*",
 ]

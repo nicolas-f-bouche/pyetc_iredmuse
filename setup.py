@@ -26,7 +26,7 @@ setup(
     package_data={
         "pyetc_iredmuse": [
             "data/**/*",
-            "Band_Filters/**/*.txt",
+            "Band_Filters/*.txt",
             "ESO_original_spectra/**/*",
         ]
     },

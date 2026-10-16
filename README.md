@@ -36,8 +36,9 @@ You can install directly from GitHub using pip:
 
 #### Option 1: clone from git (recommended)
 ```bash
-pip install git+https://github.com/nicolas-f-bouche/pyetc_iredmuse.git
 git clone git@github.com:nicolas-f-bouche/pyetc_iredmuse.git
+cd pyetc_iredmuse
+pip install .
 ```
 
 #### Option 2: forced install

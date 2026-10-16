@@ -1,15 +1,28 @@
-"""
-Legacy setup.py for backward compatibility.
-Version is read from pyetc_iredmuse/__init__.py — edit only that file to bump the version.
-"""
+"""Legacy setup.py for backward compatibility."""
 from setuptools import setup
-import re
 import os
+import runpy
+from pathlib import Path
+from setuptools.command.build_py import build_py as _build_py
 
-# Single source of truth for version
 _here = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(_here, "pyetc_iredmuse", "__init__.py")) as _f:
-    _version = re.search(r'^__version__\s*=\s*["\']([^"\']+)["\']', _f.read(), re.M).group(1)
+with open(os.path.join(_here, "pyetc_iredmuse", "VERSION"), encoding="ascii") as _f:
+    _version = _f.read().strip()
+
+
+def _get_release_date():
+    release_info = os.path.join(_here, "pyetc_iredmuse", "_release_info.py")
+    return runpy.run_path(release_info)["__releasedate__"]
+
+
+class build_py(_build_py):
+    def run(self):
+        super().run()
+        release_info = Path(self.build_lib) / "pyetc_iredmuse" / "_release_info.py"
+        release_info.write_text(
+            f'__releasedate__ = "{_get_release_date()}"\n',
+            encoding="ascii",
+        )
 
 # Read requirements
 with open("requirements.txt", "r") as f:
@@ -25,6 +38,7 @@ setup(
     packages=["pyetc_iredmuse"],
     package_data={
         "pyetc_iredmuse": [
+            "VERSION",
             "data/**/*",
             "Band_Filters/*.txt",
             "ESO_original_spectra/**/*",
@@ -33,6 +47,7 @@ setup(
     use_scm_version=False,
     include_package_data=True,
     install_requires=requirements,
+    cmdclass={"build_py": build_py},
     python_requires=">=3.9",
     classifiers=[
         "Development Status :: 3 - Alpha",

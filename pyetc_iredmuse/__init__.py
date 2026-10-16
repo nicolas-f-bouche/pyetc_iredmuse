@@ -5,8 +5,11 @@ A Python package for exposure time calculation and signal-to-noise ratio estimat
 for IFS instruments MUSE BlueMUSE iredMUSE, WST and Harmoni
 """
 
-__version__ = "0.4"
-__releasedate__ = "24 Sep 2026"
+from pathlib import Path
+
+__version__ = Path(__file__).with_name("VERSION").read_text(encoding="ascii").strip()
+from ._release_info import __releasedate__
+
 __author__ = "Nicolas Bouché & Matteo Ferro & Roland Bacon"
 
 # Import main classes and functions

@@ -41,13 +41,14 @@ Documentation = "https://github.com/nfbouche/pyetc_iredmuse#readme"
 Issues = "https://github.com/nfbouche/pyetc_iredmuse/issues"
 
 [tool.setuptools.dynamic]
-version = {attr = "pyetc_iredmuse.__version__"}
+version = {file = ["pyetc_iredmuse/VERSION"]}
 
 [tool.setuptools]
 packages = ["pyetc_iredmuse"]
 
 [tool.setuptools.package-data]
 pyetc_iredmuse = [
+    "VERSION",
     "data/**/*",
     "Band_Filters/*.txt",
     "ESO_original_spectra/**/*",

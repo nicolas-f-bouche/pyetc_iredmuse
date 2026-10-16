@@ -34,7 +34,7 @@ setup(
     description="Exposure Time Calculator for the iredMUSE instrument (VLT)",
     author="Nicolas Bouché, Matteo Ferro, Roland Bacon",
     author_email="nicolas.bouche@cnrs.fr",
-    url="https://github.com/nfbouche/pyetc_iredmuse",
+    url="https://github.com/nicolas-f-bouche/pyetc_iredmuse",
     packages=["pyetc_iredmuse"],
     package_data={
         "pyetc_iredmuse": [
